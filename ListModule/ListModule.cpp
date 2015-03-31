@@ -69,6 +69,7 @@ void Processes(DWORD *aProc, DWORD nProc, WCHAR *procName)
 
 void usage()
 {
+    // ok always have 42!!
     wprintf(L"        @@@@   @@@@@@\n");
     wprintf(L"       @@ @@  @@   @@\n");
     wprintf(L"      @@  @@       @@\n");
@@ -76,9 +77,9 @@ void usage()
     wprintf(L"     @@@@@@@    @@   \n");
     wprintf(L"          @@   @@    \n");
     wprintf(L"          @@   @@@@@@\n");
-    wprintf(L"\n\n"); 
+    wprintf(L"\n\n");
     wprintf(L"ListModule <filter>\n");
-    wprintf(L"      List all modules of processes that contain the filter in its full path\n\n"); 
+    wprintf(L"      List all modules of processes that contain the \"filter\" in its full path\n\n"); 
     wprintf(L"ListModule\n");
     wprintf(L"      List all modules of all processes\n\n"); 
 }
