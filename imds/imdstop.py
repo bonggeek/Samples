@@ -10,7 +10,7 @@ mdUrlJson =  mdUrl + "?format=json&api-version=latest_internal"
 
 def restCall(mdUrl):
     header={'Metadata': 'True'}
-    request = urllib.request.Request(url=mdUrl, headers=header)
+    request = urllib.request.Request(url=mdUrl, headers=header) 
     response = urllib.request.urlopen(request)
     data = response.read()
     dataStr = data.decode("utf-8")
@@ -18,4 +18,6 @@ def restCall(mdUrl):
     
 res = restCall(mdUrlJson)
 print(res)
+print('======================')
+print(json.dumps(res, indent=4))
 
