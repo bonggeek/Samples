@@ -18,6 +18,4 @@ def restCall(mdUrl):
     
 res = restCall(mdUrlJson)
 print(res)
-print('======================')
-print(json.dumps(res, indent=4))
 
