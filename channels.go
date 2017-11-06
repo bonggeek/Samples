@@ -23,6 +23,7 @@ func main(){
 
     chan1 <- true
 
+    fmt.Println("Channel size", cap(chan1))
     var input string
     fmt.Scanln(&input)
 }

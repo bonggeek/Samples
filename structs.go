@@ -14,7 +14,7 @@ func main() {
         student{class: 1, name: "somtapa", grade: 'b'},
         student{class: 1, name: "pori", grade: 'c'},
         student{class: 1, name: "nogen", grade: 'c'},
-    }
+   
 
     var s *student = &students[0]
     s.class = 4
