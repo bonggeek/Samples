@@ -1,50 +1,30 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"strconv"
-	"strings"
+	element "github.com/bonggeek/element"
 	//    "io"
 	//    "io/ioutil"
-	"os"
 )
 
-type element struct {
-	symbol   string
-	atNumber uint
-	name     string
-}
 
-func ReadElement(elementStr string) (element, error) {
-	splits := strings.Split(elementStr, ",")
-	atNum, err := strconv.ParseUint(splits[0], 10, 32)
-	if err != nil {
-		return element{}, err
-	}
-
-	el := element{atNumber: uint(atNum), symbol: splits[1], name: splits[2]}
-
-	return el, nil
-}
 
 func main() {
-	//elements := make(map[string]element)
-	f, err := os.Open("./elementlist.csv")
-	if err != nil {
-		panic("failed to open file")
+	var elements element.Elements
+	elements.LoadPeriodicTable("./elementlist.csv")
+
+	word1 := "basu"
+	fmt.Println(word1)
+	result2 := elements.GetElementsForWord(word1)
+	for _, k := range result2 {
+		fmt.Println(k)
 	}
 
-	defer f.Close()
 
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		line := scanner.Text()
-		element, err := ReadElement(line)
-		if err != nil {
-			fmt.Println("Failed to parse element", err)
-			panic("Error!!")
-		}
-		fmt.Println(element)
+	word2 := "how"
+	fmt.Println(word2)
+	result1 := elements.GetElementsForWord(word2)
+	for _, k := range result1 {
+		fmt.Println(k)
 	}
 }
