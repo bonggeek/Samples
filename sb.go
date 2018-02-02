@@ -6,6 +6,7 @@ import (
 	"github.com/michaelbironneau/asbclient"
 	"fmt"
 	"time"
+    "strings"
 )
 
 
@@ -15,21 +16,23 @@ func check(e error) {
     }
 }
 
+
 func main(){
-	
+
 	log.Println("Starting")
 
 	path := "colomanager-to-rp"
-	// https://ucs-service-bus.servicebus.windows.net/colomanager-to-rp
 
 	dat, err := ioutil.ReadFile("/etc/password/queuePassword")
 	//dat, err := ioutil.ReadFile("C:\\temp\\password.txt")
+
 	check(err)
 	password := string(dat)
+    password = strings.TrimSuffix(password, "\n")
 
 	sbqClient := asbclient.New(asbclient.Queue, "ucs-service-bus", "sendlisten", password)
 	go func() {
-		for i:= 0; i < 3; i++{
+		for i:= 0; i < 10; i++{
 			i := 1
 			err := sbqClient.Send(path, &asbclient.Message{
 				Body: []byte(fmt.Sprintf("Hello World from GoLang %d", i)),
